@@ -44,9 +44,5 @@ public class Rule {
         return ast;
     }
 
-    public void setAst(ASTNode ast) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        this.ast = objectMapper.writeValueAsString(ast);
-    }
 
 }
