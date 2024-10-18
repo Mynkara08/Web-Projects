@@ -1,5 +1,6 @@
 package com.zeotap.zeotap_rule_engine.models;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,23 +12,46 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 public class ASTNode {
-    public String type;
-    public String operator;
-    public ASTNode left;
-    public ASTNode right;
-    public String key;
-    public String value;
-    public ASTNode(String type, String operator, ASTNode left, ASTNode right) {
+
+
+    private String type;
+    private ASTNode left;
+    private ASTNode right;
+    private String value;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
-        this.operator = operator;
+    }
+
+    public ASTNode getLeft() {
+        return left;
+    }
+
+    public void setLeft(ASTNode left) {
         this.left = left;
+    }
+
+    public ASTNode getRight() {
+        return right;
+    }
+
+    public void setRight(ASTNode right) {
         this.right = right;
     }
-    public ASTNode(String type, String key, String operator, String value) {
-        this.type = type;
-        this.key = key;
-        this.operator = operator;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
         this.value = value;
     }
 }
+
+
+
 
