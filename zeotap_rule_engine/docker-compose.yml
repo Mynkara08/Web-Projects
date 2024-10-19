@@ -5,16 +5,16 @@ services:
     ports:
       - "8081:6969"
     environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/zeotapdb
+      SPRING_DATASOURCE_USERNAME: mayank
+      SPRING_DATASOURCE_PASSWORD: zeotap
     depends_on:
       - db
   db:
     image: postgres:15
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: mayank
+      POSTGRES_PASSWORD: zeotap
       POSTGRES_DB: zeotapdb
     ports:
       - "5432:5432" 
@@ -25,8 +25,8 @@ services:
     image: dpage/pgadmin4:latest  
     container_name: pgadmin  
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}  
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}  
+      PGADMIN_DEFAULT_EMAIL: mayank@zeotap.com  
+      PGADMIN_DEFAULT_PASSWORD: zeotap  
     ports:
       - "80:80"  
     networks:
