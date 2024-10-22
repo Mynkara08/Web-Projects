@@ -7,23 +7,37 @@ const EvaluateRuleForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("/api/rules/evaluate_rule", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ast: ruleName, data: JSON.parse(data) }),
-    });
-    const result = await response.json();
-    setResult(JSON.stringify(result, null, 2));
+    try {
+      const response = await fetch(
+        "https://rule-engine-64c2.onrender.com/api/v1/rules/evaluate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ast: ruleName, data: JSON.parse(data) }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Something went wrong");
+      }
+
+      const res = await response.json();
+      // console.log(result);
+      setResult(JSON.stringify(res.result, null, 2));
+    } catch (error) {
+      setResult(`Error: ${error.message}`);
+    }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Rule Name:</label>
-          <input
+          <label>Rule: </label>
+          <textarea
             type="text"
             value={ruleName}
             onChange={(e) => setRuleName(e.target.value)}
@@ -31,7 +45,7 @@ const EvaluateRuleForm = () => {
           />
         </div>
         <div>
-          <label>Data JSON:</label>
+          <label>Data JSON: </label>
           <textarea
             value={data}
             onChange={(e) => setData(e.target.value)}
