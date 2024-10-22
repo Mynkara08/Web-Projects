@@ -20,7 +20,6 @@ const RuleForm = () => {
     );
 
     const data = await response.json();
-    console.log(data);
     if (data.success) {
       const ast = data.AST.ast;
       const treeStructure = printTreeToString(ast);
