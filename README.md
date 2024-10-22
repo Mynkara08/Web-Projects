@@ -300,7 +300,8 @@ The function evaluates the rule against the provided data and returns **True** i
 ***Frontend Setup***
 1. Navigate to the frontend directory:
    ```bash
-   cd cd Frontend
+   cd Assignment-1
+   cd Frontend
    ```
 2. Install dependencies:
    ```bash
@@ -326,6 +327,7 @@ The function evaluates the rule against the provided data and returns **True** i
    ```
 2. Navigate to the backend directory
    ```bash
+   cd Assignment-1
    cd zeotap_rule_engine_backend
    ```
 3. Build the project and install dependencies:
