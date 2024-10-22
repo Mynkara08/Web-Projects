@@ -339,3 +339,109 @@ The function evaluates the rule against the provided data and returns **True** i
    mvn spring-boot:run
    ```
 5. The Spring Boot application should now be running on http://localhost:8080
+
+
+
+# Real-Time Data Processing System for Weather Monitoring
+
+## Overview
+
+The **Real-Time Data Processing System for Weather Monitoring** is designed to continuously monitor and provide summarized insights into weather conditions. By leveraging the OpenWeatherMap API, the system retrieves various weather parameters and presents them in an easily digestible format, including rollups and aggregates for enhanced analysis.
+
+## Objective
+
+The primary objective of this project is to develop a robust real-time data processing system that can:
+
+- Monitor weather conditions in real time.
+- Summarize insights using rollups and aggregates.
+- Provide a user-friendly interface for displaying current weather, averages, daily summaries, and alerts.
+
+## Data Source
+
+The system utilizes data from the [OpenWeatherMap API](https://openweathermap.org/). You will need to sign up for a free API key to access the data. The API provides several weather parameters, including:
+
+- **main**: Main weather condition (e.g., Rain, Snow, Clear)
+- **temp**: Current temperature in Centigrade
+- **feels_like**: Perceived temperature in Centigrade
+- **dt**: Time of the data update (Unix timestamp)
+
+## Features
+
+- **Current Weather Display**: Showcases the current weather conditions.
+- **Weather Averages Chart**: Visual representation of weather averages over time using Chart.js.
+- **Daily Weather Summary**: Allows users to select a city and date range to fetch and display daily summaries.
+- **Recent Alerts Section**: Displays any recent weather alerts received from the API.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- NPM
+- An OpenWeatherMap API key (sign up [here](https://openweathermap.org/))
+
+### Installation
+
+***Backend Setup***
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Mynkara08/ZeotapAssignment
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Assignment-2
+   cd Realtime-Weather-Monitoring-Backend
+   ```
+
+3. Ensure you have the docker-compose.yml file in the root directory.
+4. Start the application using Docker Compose:
+   ```bash
+   docker-compose up
+   ```
+5. Docker will pull the required images (if not already available) and start the services defined in the docker-compose.yml file.
+6. To stop the application, use:
+   ```bash
+   docker-compose down
+   ```
+### Manual Installation (Without Docker)
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mynkara08/ZeotapAssignment
+   ```
+2. Navigate to the backend directory
+   ```bash
+   cd Assignment-2
+   cd Realtime-Weather-Monitoring-Backend
+   ```
+3. Build the project and install dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the application:
+   ```bash
+   node server.js
+   ```
+5. The application should now be running on http://localhost:8080
+### Configuration
+
+1. Add your OpenWeatherMap API key:
+
+   ```plaintext
+   OPENWEATHERMAP_API_KEY=your_api_key_here
+   ```
+***Frontend Setup***
+1. Install Live Server from ([extensions](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+2. Start the live server.
+3. You can view the webpage in your browser at http://127.0.0.1:5500/index.html
+## Usage
+
+- Select a city from the dropdown menu to view the current weather and fetch daily summaries.
+- Use the date picker to specify the date range for the daily weather summary.
+- The application will display weather alerts in real time.
+
+
+
