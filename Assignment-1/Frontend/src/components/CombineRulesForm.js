@@ -11,8 +11,7 @@ const CombineRulesForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Extract just the rule values into an array
+    
     const ruleTexts = rules.map((rule) => rule.rule);
 
     try {
@@ -23,13 +22,11 @@ const CombineRulesForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ rules: ruleTexts, operator }), // Send rule texts and operator
+          body: JSON.stringify({ rules: ruleTexts, operator }),
         }
       );
       const data = await response.json();
-      console.log(data);
       if (data.success) {
-        // Convert the AST to a string format
         const treeStructure = printTree(data.AST.ast);
         setResult(treeStructure);
       } else {
