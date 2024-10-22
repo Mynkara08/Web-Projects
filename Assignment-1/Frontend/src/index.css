@@ -6,9 +6,10 @@ body {
     align-items: center;
     background-color: #f4f4f9;
 }
+
 h2 {
-    text-align: center; 
-    margin-top: 0; 
+    text-align: center;
+    margin-top: 0;
     font-size: 24px;
     font-weight: bold;
 }
@@ -23,17 +24,18 @@ h2 {
     margin-top: 20px;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
     width: calc(100% - 18px);
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 textarea {
     height: 80px;
-    resize: vertical; 
+    resize: vertical;
 }
 
 .rule-container input[type="text"] {
@@ -51,7 +53,7 @@ textarea {
 }
 
 .rule-container select {
-   
+
     border: 1px solid #0056b3;
     border-radius: 4px;
     cursor: pointer;
@@ -61,13 +63,13 @@ textarea {
 .button-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Adds space between buttons */
+    gap: 10px;
     margin-top: 15px;
 }
 
 .button-container .btn {
-    width: 49%; /* Each button will take half of the container width */
-    background-color: #007bff; /* Blue color */
+    width: 49%;
+    background-color: #007bff;
     color: white;
     padding: 10px;
     border: none;
@@ -78,7 +80,7 @@ textarea {
 }
 
 .button-container .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 form {
@@ -86,11 +88,13 @@ form {
     flex-direction: column;
 }
 
-form div, form label {
+form div,
+form label {
     margin-bottom: 10px;
 }
 
-form input[type="text"], form textarea {
+form input[type="text"],
+form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -111,4 +115,14 @@ form button {
 
 form button:hover {
     background-color: #0056b3;
+}
+
+form select {
+    width: fit-content;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+}
+
+pre {
+    margin-top: 50px;
 }
