@@ -270,4 +270,70 @@ The function evaluates the rule against the provided data and returns **True** i
   "result":false
 }
 ```
+## Docker Setup
 
+### Prerequisites
+- **Docker**: Ensure Docker is installed on your machine. You can download it from [Docker's official site](https://www.docker.com/get-started).
+- **Docker Compose**: Ensure Docker Compose is also installed.
+
+### Running the Application
+   ***Backend Setup***
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mynkara08/ZeotapAssignment
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Assignment-1
+   cd zeotap_rule_engine_backend
+   ```
+3. Ensure you have the docker-compose.yml file in the root directory.
+4. Start the application using Docker Compose:
+   ```bash
+   docker-compose up
+   ```
+5. Docker will pull the required images (if not already available) and start the services defined in the docker-compose.yml file.
+6. To stop the application, use:
+   ```bash
+   docker-compose down
+   ```
+***Frontend Setup***
+1. Navigate to the frontend directory:
+   ```bash
+   cd cd Frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the frontend development server:
+   ```bash
+   npm start
+   ```
+4. The frontend will be running on http://localhost:3000/ by default. You can access it through your browser.
+
+## Getting Started Without Docker
+
+### Prerequisites
+- **Java Development Kit (JDK)**: Ensure you have JDK 11 or higher installed. You can download it from the [Oracle website](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or [AdoptOpenJDK](https://adoptopenjdk.net/).
+- **Maven**: Make sure Maven is installed to manage project dependencies. You can download it from the [Maven website](https://maven.apache.org/download.cgi).
+
+### Manual Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mynkara08/ZeotapAssignment
+   ```
+2. Navigate to the backend directory
+   ```bash
+   cd zeotap_rule_engine_backend
+   ```
+3. Build the project and install dependencies:
+   ```bash
+   mvn clean install
+   ```
+4. Run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
+5. The Spring Boot application should now be running on http://localhost:8080
