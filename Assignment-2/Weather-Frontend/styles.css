@@ -121,14 +121,6 @@ button:disabled {
     cursor: not-allowed;
 }
 
-button {
-    background-color: #dc3545;
-}
-
-button {
-    background-color: #28a745;
-}
-
 button.secondary {
     background-color: #6c757d;
 }
@@ -173,6 +165,7 @@ select {
 
 #get_alerts_btn {
     margin-top: 10px;
+    background-color: #28a745;
 }
 
 #alerts-table {
@@ -243,4 +236,22 @@ select {
 
 #alerts-body tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+@media (max-width: 600px) {
+
+    .input-row select,
+    .input-row input,
+    .input-row button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    button,
+    select,
+    input {
+        margin-top: 10px;
+        width: 100%;
+    }
+
 }
