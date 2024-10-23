@@ -1,6 +1,7 @@
-# Table of Contents
+# ZEOTAP ASSIGNMENT
+## Table of Contents
 
-1. ## [Rule Engine with AST](#rule-engine-with-ast)  
+1. ### [Rule Engine with AST](#rule-engine-with-ast)  
    1.1 [Overview](#overview)  
    1.2 [Objective](#objective)  
    1.3 [Architecture](#architecture)  
@@ -14,7 +15,7 @@
    1.7 [Getting Started Without Docker](#getting-started-without-docker)  
       1.7.1 [Manual Installation](#manual-installation)  
 
-2. ## [Real-Time Data Processing System for Weather Monitoring](#real-time-data-processing-system-for-weather-monitoring)  
+2. ### [Real-Time Data Processing System for Weather Monitoring](#real-time-data-processing-system-for-weather-monitoring)  
    2.1 [Overview](#overview-1)  
    2.2 [Objective](#objective-1)  
    2.3 [Data Source](#data-source)  
