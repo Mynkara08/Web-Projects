@@ -1,6 +1,6 @@
 # Table of Contents
 
-1. [Rule Engine with AST](#rule-engine-with-ast)  
+1. ## [Rule Engine with AST](#rule-engine-with-ast)  
    1.1 [Overview](#overview)  
    1.2 [Objective](#objective)  
    1.3 [Architecture](#architecture)  
@@ -14,7 +14,7 @@
    1.7 [Getting Started Without Docker](#getting-started-without-docker)  
       1.7.1 [Manual Installation](#manual-installation)  
 
-2. [Real-Time Data Processing System for Weather Monitoring](#real-time-data-processing-system-for-weather-monitoring)  
+2. ## [Real-Time Data Processing System for Weather Monitoring](#real-time-data-processing-system-for-weather-monitoring)  
    2.1 [Overview](#overview-1)  
    2.2 [Objective](#objective-1)  
    2.3 [Data Source](#data-source)  
@@ -407,6 +407,7 @@ The system utilizes data from the [OpenWeatherMap API](https://openweathermap.or
 
 ### Prerequisites
 
+- Docker Daemon
 - Node.js
 - NPM
 - An OpenWeatherMap API key (sign up [here](https://openweathermap.org/))
@@ -428,12 +429,24 @@ The system utilizes data from the [OpenWeatherMap API](https://openweathermap.or
    ```
 
 3. Ensure you have the docker-compose.yml file in the root directory.
-4. Start the application using Docker Compose:
+4. Create a .env file in the root directory with the following content:
+   ```bash
+   PG_HOST=db
+   PG_USER=your_pg_user
+   PG_PASSWORD=your_pg_password
+   PG_DATABASE=your_pg_database
+   PG_PORT=5432
+   API_KEY=your_api_key //Api Key in Submitted PDF
+   PORT=your_app_port
+   USER_EMAIL=your_email@example.com // Email in Submitted PDF
+   USER_PASS=your_secure_password // password in Submitted PDF
+   ```
+5. Start the application using Docker Compose:
    ```bash
    docker-compose up
    ```
-5. Docker will pull the required images (if not already available) and start the services defined in the docker-compose.yml file.
-6. To stop the application, use:
+6. Docker will pull the required images (if not already available) and start the services defined in the docker-compose.yml file.
+7. To stop the application, use:
    ```bash
    docker-compose down
    ```
@@ -524,13 +537,6 @@ The system utilizes data from the [OpenWeatherMap API](https://openweathermap.or
     "message": "your alert is Removed Successfully",
     "data": []
    }
-   ```
-### Configuration
-
-1. Add your OpenWeatherMap API key:
-
-   ```plaintext
-   OPENWEATHERMAP_API_KEY=your_api_key_here
    ```
 ***Frontend Setup***
 1. Install Live Server from ([extensions](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
