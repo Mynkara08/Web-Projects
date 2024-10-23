@@ -426,6 +426,74 @@ The system utilizes data from the [OpenWeatherMap API](https://openweathermap.or
    node server.js
    ```
 5. The application should now be running on http://localhost:8080
+
+## API Design
+
+1. **(get_alerts)**
+   
+   ```bash
+   http://localhost:6969/get-alerts
+   ```
+   Sample Response:
+
+   ```bash
+   {
+    "success": true,
+    "message": "List of All Alerts",
+    "data": [
+        {
+            "id": 15,
+            "email": "mayunksingh@gmail.com",
+            "thresold": 22,
+            "city": "Hyderabad"
+        }
+    ]
+   }
+   ```
+2. **(create_alerts)**
+   
+   ```bash
+   https://weather-analysis-hhcy.onrender.com/add-alert
+   ```
+
+   ```bash
+   {
+    "email":"prashanbhu@gmail.com",
+     "thresoldTemperature":32,
+      "city":"Bengaluru"
+   }
+   ```
+
+   Sample Response:
+
+   ```bash
+   {
+    "success": true,
+    "message": "Your Alert is Successfully created",
+    "data": [
+        {
+            "id": 16,
+            "email": "prashanbhu@gmail.com",
+            "thresold": 32,
+            "city": "Bengaluru"
+        }
+    ]
+   }
+   ```
+3. **(delete_alert)**
+  
+   ```bash
+   https://weather-analysis-hhcy.onrender.com/remove-alert/16
+   ```
+
+   Sample Response:
+   ```bash
+   {
+    "success": true,
+    "message": "your alert is Removed Successfully",
+    "data": []
+   }
+   ```
 ### Configuration
 
 1. Add your OpenWeatherMap API key:
