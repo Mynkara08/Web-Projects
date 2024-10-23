@@ -225,22 +225,82 @@ async function fetchDailySummary() {
 }
 
 async function fetchAlerts() {
-  const city = document.getElementById("city-select").value;
+  try {
+    const response = await fetch(
+      `https://weather-analysis-hhcy.onrender.com/get-alerts`
+    );
+    const result = await response.json();
+
+    if (result.success && Array.isArray(result.data)) {
+      const alertsContainer = document.getElementById("alerts-body");
+      alertsContainer.innerHTML = ""; // Clear existing alerts
+      result.data.forEach((alert, index) => {
+        const alertElement = document.createElement("tr");
+        alertElement.className = "alert-item";
+        alertElement.innerHTML = `
+                  <td>${index + 1}</td> 
+                  <td>${alert.email}</td>
+                  <td>${alert.thresold !== null ? alert.thresold : "N/A"}</td>
+                  <td>${alert.city}</td>
+                  <td><button onclick="removeAlert(${
+                    alert.id
+                  })">Remove</button></td>
+              `;
+        alertsContainer.appendChild(alertElement);
+      });
+    } else {
+      console.error("Expected data to be an array, but got:", result.data);
+    }
+  } catch (error) {
+    console.error("Failed to fetch alerts:", error);
+  }
+}
+
+async function createAlert(event) {
+  event.preventDefault();
+  const email = document.getElementById("alert-email").value;
+  const thresholdTemperature = document.getElementById(
+    "threshold-temperature"
+  ).value;
+  const city = document.getElementById("alert-city").value;
+
   const response = await fetch(
-    `https://weather-analysis-hhcy.onrender.com/weather-history/${city}`
+    "https://weather-analysis-hhcy.onrender.com/add-alert",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        thresoldTemperature: thresholdTemperature,
+        city: city,
+      }),
+    }
   );
-  const alerts = await response.json();
-  const alertsContainer = document.getElementById("alerts-container");
-  alertsContainer.innerHTML = "";
-  alerts.forEach((alert) => {
-    const alertElement = document.createElement("div");
-    alertElement.className = "alert-item";
-    alertElement.innerHTML = `
-            <strong>${alert.alert_type}</strong> - ${alert.timestamp}<br>
-            ${alert.message}
-        `;
-    alertsContainer.appendChild(alertElement);
-  });
+
+  const result = await response.json();
+  if (result.success) {
+    fetchAlerts();
+  } else {
+    console.error("Failed to create alert:", result.message);
+  }
+}
+
+async function removeAlert(id) {
+  const response = await fetch(
+    `https://weather-analysis-hhcy.onrender.com/remove-alert/${id}`,
+    {
+      method: "GET",
+    }
+  );
+  console.log(response);
+  const result = await response.json();
+  if (result.success) {
+    fetchAlerts(); // Refresh alerts table
+  } else {
+    console.error("Failed to remove alert:", result.message);
+  }
 }
 
 function initializeCitySelect() {
@@ -257,7 +317,7 @@ function initializeCitySelect() {
 initializeCitySelect();
 fetchCurrentWeather();
 fetchWeatherAverages();
-// fetchAlerts();
+fetchAlerts();
 setInterval(fetchCurrentWeather, 300000);
 setInterval(fetchWeatherAverages, 300000);
 setInterval(fetchAlerts, 300000);
