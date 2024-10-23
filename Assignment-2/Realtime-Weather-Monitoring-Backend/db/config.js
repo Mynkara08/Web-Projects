@@ -8,7 +8,9 @@ const pool = new Pool({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
-  ssl: false
+  ssl: {
+    rejectUnauthorized:true
+  }
 });
 
 const createTable = async () => {
@@ -30,6 +32,24 @@ const createTable = async () => {
     console.error("Error creating rules table:", err);
   }
 };
+const createAlertTable = async () => {
+  const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS alerts
+        (id SERIAL PRIMARY KEY,
+        email VARCHAR(255),
+        thresold DOUBLE PRECISION,
+        city VARCHAR(255)
+        );
+    `;
+
+  try {
+    await pool.query(createTableQuery);
+    console.log("alert table checked/created successfully.");
+  } catch (err) {
+    console.error("Error creating alert table:", err);
+  }
+};
 
 createTable();
+createAlertTable();
 module.exports = pool;
