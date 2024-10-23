@@ -20,7 +20,6 @@ const sendAlertEmail = async(userEmail, currentTemp, thresholdTemperature) => {
         subject: 'Temperature Alert',
         text: `Alert! The current temperature is ${currentTemp}°C, which is above the threshold of ${thresholdTemperature}°C.`
     };
-    console.log(mailOptions);
     
     await transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -32,12 +31,10 @@ const sendAlertEmail = async(userEmail, currentTemp, thresholdTemperature) => {
 const sendAlert = async ( temperature,city) => {
   try {
     const data=await getAlertList(temperature,city);
-    console.log(data);
     
     if(!data.length)return;
     for(const it of data){
       if(temperature>it.thresold){
-        console.log('data', it.thresold);
         await sendAlertEmail(it.email,temperature,it.thresold);
       }
     }    
