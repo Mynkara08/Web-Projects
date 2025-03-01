@@ -1,4 +1,4 @@
-# ZEOTAP ASSIGNMENT
+# ASSIGNMENT
 ## Table of Contents
 
 1. ### [Rule Engine with AST](#rule-engine-with-ast)  
